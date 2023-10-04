@@ -1,0 +1,10 @@
+.DS_Store
+*.env
+__pycache__/
+student_set/
+teacher_set/
+annotations/
+train2017/
+SegSets/
+*.npy
+*.zip
