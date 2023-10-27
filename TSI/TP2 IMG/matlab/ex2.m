@@ -7,10 +7,10 @@ addpath( genpath( 'src' ) )
 %% Choix de l'image
 isReal = 0;
 if( isReal )    % Image reelle
-    img1 = imread( '../../../data/girl1.png' );
-    img2 = imread( '../../../data/girl2.png' );
+    img1 = imread( '../data/TP/girl1.png' );
+    img2 = imread( '../data/TP/girl2.png' );
     img1 = double( rgb2gray( img1 ) );
-    img2 = double( rgb2gray( img2 ) );
+    img2 = double( rgb2gray( img2 ) );w
     subS = 3;
 else    % Image test (binaire)
     vBlock = [4, -2];    % Deplacement (x, y) du carre
