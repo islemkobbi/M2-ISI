@@ -10,7 +10,7 @@ if( isReal )    % Image reelle
     img1 = imread( '../data/TP/girl1.png' );
     img2 = imread( '../data/TP/girl2.png' );
     img1 = double( rgb2gray( img1 ) );
-    img2 = double( rgb2gray( img2 ) );w
+    img2 = double( rgb2gray( img2 ) );
     subS = 3;
 else    % Image test (binaire)
     vBlock = [4, -2];    % Deplacement (x, y) du carre
@@ -31,7 +31,7 @@ optionsBM = struct( 'dimB', dimB, 'dimR', dimR );
     %-- 4 Step Search
 options4SS = struct( 'dimB', dimB );
     %-- Lucas-Kanade & Bruhn
-sW = 7;        % 1/2 largeur de la fenetre de ponderation
+sW = 3;        % 1/2 largeur de la fenetre de ponderation
 typeW = 0;      % Type de la fenetre de ponderation (0 = uniforme, 1 = gaussienne)
 optionsLK = struct( 'sW', sW, 'typeW', typeW );
     %-- Horn-Schunck & Bruhn

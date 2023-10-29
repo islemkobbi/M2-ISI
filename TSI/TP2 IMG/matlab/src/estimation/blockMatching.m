@@ -34,9 +34,9 @@ function [u, v] = blockMatching( img1, img2, options )
     for x = dimB+1:sX-dimB     % Pour avoir la place du bloc
         for y = dimB+1:sY-dimB
             subR = img1( x-dimB:x+dimB, y-dimB:y+dimB );
-            dMin = flintmax;
-%             subI = img2( x-dimB:x+dimB, y-dimB:y+dimB );
-%             dMin = getDistance( subR, subI );
+%             dMin = flintmax;
+            subI = img2( x-dimB:x+dimB, y-dimB:y+dimB );
+            dMin = getDistance( subR, subI );
             uTmp = 0;       vTmp = 0;
             for dX = -dimR:1:+dimR
                 xP = x + dX;
