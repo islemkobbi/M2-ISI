@@ -5,8 +5,8 @@ clc
 addpath src/suivi/filtreParticulaire/
 addpath src/
 
-dataPath = '../../data/';
-seqNum = 1;
+dataPath = '../data/TP/';
+seqNum = 2;
 switch seqNum
     case 1
         seqName = 'Coke/';
@@ -21,16 +21,18 @@ switch seqNum
         sqeName = 'Beanbags/';
         rect = [ 154; 148; 35; 37 ];
 end
+
+
 seq = readSeq( [dataPath, seqName], 0 );
 
 % Parametres
 sSeq = size( seq );
 isColor = length( sSeq ) > 3;
-sigma = 25;     % sigma de propagation
+sigma = 5;     % sigma de propagation
 nbPart = 100;	% nombre de particules
 lambda = 100;   % facteur de vraisemblance
-nbBin = 50;    % nombre de bins des histogrammes
-alpha = 0.1;    % facteur de reechantillonnage
+nbBin = 5;    % nombre de bins des histogrammes
+alpha = 1;    % facteur de reechantillonnage
 tMax = 100;     % nombre de frames
 nbDisplay = 6;  % nombre d'affichage
 dT = round( tMax / (nbDisplay - 1) );

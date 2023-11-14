@@ -1,4 +1,4 @@
-function [dMAD, dMSSD, dH] = getDistance( img, ptsRef, ptsCtr )
+function [dMAD, dMSSD, dH] = GetDistance( img, ptsRef, ptsCtr )
 %-------------------------------------------------------------%
 % Calcul de 3 distances entre un contour de reference et un
 % contour resultat
@@ -11,6 +11,7 @@ function [dMAD, dMSSD, dH] = getDistance( img, ptsRef, ptsCtr )
 %     - dMSSD: mean sum of squared distance (MAD) entre les 2 contours
 %     - dH: distance de Hausdorff
 %-------------------------------------------------------------%
+
     % Interpolation des contours
     refI = interpCtr( ptsRef, 2 );
     ctrI = interpCtr( ptsCtr, 2 );
@@ -38,3 +39,5 @@ function [dMAD, dMSSD, dH] = getDistance( img, ptsRef, ptsCtr )
         yI = spline( t, pts([1:end, 1], 2), tI );
         
         ptsI = [xI(1:end-1), yI(1:end-1)];
+
+        

@@ -1,12 +1,12 @@
 clear variables;
-% close all;
-% clc;
+close all;
+%clc;
 
 addpath( genpath( 'src' ) )
 
 %% Load data
-load( '../../data/SAx/SAx01.mat' );
-% load( 'data/SAx/SAx02.mat' );
+%load( '../data/TP/SAx/SAx01.mat' );
+load( '../data/TP/SAx/SAx02.mat' );
 pts = refEndo;
 % pts = refEpi;
 sSeq = size( seq );
@@ -14,7 +14,7 @@ sSeq = size( seq );
 %% Parametres
 nbPts = 20;     % Nombre de points de l'ellipse
     %-- Kalman
-s2v = 5e3;      % Bruit sur l'etat / le modele
+s2v = 1e3;      % Bruit sur l'etat / le modele
 s2n = 1e0;      % Bruit sur l'observation
 
 %% Initialisation
@@ -44,6 +44,7 @@ xE = [ xE2; (xE2 - xE1) / dT ];
 Px = [ V, V / dT; V / dT, 2*V / dT^2 ];
 
 %% Tracking
+
 dMAD = zeros( sSeq(3), 2 );     dMSSD = zeros( sSeq(3), 2 );        dH = zeros( sSeq(3), 2 );
 figure(1); colormap gray;
 for t = 3:1:sSeq(3)
@@ -70,8 +71,8 @@ for t = 3:1:sSeq(3)
         ptsK(:, :, t) = ellipse2Pts( xE(1:5), nbPts );
     %-- Distance avec la reference
     ptsR = pts( pts(:, 3) == t, 1:2 );    
-%     [dMAD(t, 1), dMSSD(t, 1), dH(t, 1)] = getDistance( seq(:, :, t), ptsR, ptsT(:, :, t ) );
-%     [dMAD(t, 2), dMSSD(t, 2), dH(t, 2)] = getDistance( seq(:, :, t), ptsR, ptsK(:, :, t ) );
+    [dMAD(t, 1), dMSSD(t, 1), dH(t, 1)] = GetDistance( seq(:, :, t), ptsR, ptsT(:, :, t ) );
+    [dMAD(t, 2), dMSSD(t, 2), dH(t, 2)] = GetDistance( seq(:, :, t), ptsR, ptsK(:, :, t ) );
     %-- Affichage
     imagesc( seq(:, :, t) ); axis image; axis off;
     hold on;
@@ -83,6 +84,6 @@ for t = 3:1:sSeq(3)
     title( [ num2str(t), ' / ', num2str( sSeq(3) ) ] );
     pause( 0.01 );
 end
-% disp( [ 'MAD (en px): ', num2str( mean( dMAD(3:end, :) ) ) ] );
-% disp( [ 'MSSD (en px): ', num2str( mean( dMSSD(3:end, :) ) ) ] );
-% disp( [ 'Distance de Hausdorff (en px): ', num2str( mean( dH(3:end, :) ) ) ] );
+disp( [ 'MAD (en px): ', num2str( mean( dMAD(3:end, :) ) ) ] );
+disp( [ 'MSSD (en px): ', num2str( mean( dMSSD(3:end, :) ) ) ] );
+disp( [ 'Distance de Hausdorff (en px): ', num2str( mean( dH(3:end, :) ) ) ] );
