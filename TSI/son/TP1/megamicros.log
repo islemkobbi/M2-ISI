@@ -1,0 +1,4 @@
+[35;21m2023-11-14 15:28:56,597 [0m[30;1m[ERROR]: [0m[31;21min megamicros.log (ws.py:300): Halt failed: Halt command failed on remote server: There is no listener job or run job to halt[0m
+[35;21m2023-11-14 15:29:50,356 [0m[30;1m[ERROR]: [0m[31;21min megamicros.log (ws.py:300): Halt failed: Halt command failed on remote server: There is no listener job or run job to halt[0m
+[35;21m2023-11-14 17:00:07,636 [0m[30;1m[ERROR]: [0m[31;21min megamicros.log (ws.py:300): Halt failed: Halt command failed on remote server: There is no listener job or run job to halt[0m
+[35;21m2023-11-14 18:05:52,293 [0m[30;1m[ERROR]: [0m[31;21min megamicros.log (h5.py:629): Quitting run() execution on Exception (MemoryError): Unable to allocate 625. KiB for an array with shape (8, 20000) and data type int32[0m
