@@ -5,7 +5,7 @@ clc
 addpath( genpath( 'src' ) )
 
 dataPath = '../data/TP/';
-seqNum = 4;
+seqNum = 2;
 switch seqNum
     case 1
         seqName = 'metro/';
@@ -36,13 +36,13 @@ alpha = 0.1;        % Facteur d'apprentissage (si typeDiff = 3)
 optionsDI = struct( 'tDeb', tDeb, 'tFin', tFin, 'type', typeDiff, 'refImg', refImg, 'tStep', tStep, 'alpha', alpha );
     
     %-- ElGammal
-nEG = 176;           % Nombre de frames utilisees pour l'apprentissage
+nEG = 170;           % Nombre de frames utilisees pour l'apprentissage
 typeEG = 1;
 nMaxEG = sSeq(3);
 optionsEG = struct( 'tDeb', tDeb, 'tFin', tFin, 'N', nEG, 'type', typeEG, 'NMax', nMaxEG );
 
     %-- ACP
-nACP = 176;          % Nombre de frames utilisees pour l'apprentissage
+nACP = 10;          % Nombre de frames utilisees pour l'apprentissage
 M = 0.70;            % Pourcentage d'eigenbackgrounds
 typeACP = 1;
 nMaxACP = sSeq(3);
@@ -59,7 +59,7 @@ switch typeDetect
 end
 
 %% Display
-figure;
+%figure;
 for t = tDeb:1:tFin
     subplot(1, 2, 1); imagesc( seq(:,:,t) ); axis image; axis off; colormap gray;
     subplot(1, 2, 2); imagesc( seqD(:,:,t) ); axis image; axis off; colormap gray; caxis( [0, 1] );
