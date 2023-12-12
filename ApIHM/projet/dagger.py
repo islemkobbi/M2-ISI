@@ -589,12 +589,13 @@ class SimpleDAggerTrainer(DAggerTrainer):
             **dagger_trainer_kwargs,
         )
         self.expert_policy = expert_policy
-        if expert_policy.observation_space != self.venv.observation_space:
-            raise ValueError(
-                "Mismatched observation space between expert_policy and venv",
-            )
-        if expert_policy.action_space != self.venv.action_space:
-            raise ValueError("Mismatched action space between expert_policy and venv")
+        
+        # if expert_policy.observation_space != self.venv.observation_space:
+        #     raise ValueError(
+        #         "Mismatched observation space between expert_policy and venv",
+        #     )
+        # if expert_policy.action_space != self.venv.action_space:
+        #     raise ValueError("Mismatched action space between expert_policy and venv") ########################
 
         # TODO(shwang):
         #   Might welcome Transitions and DataLoaders as sources of expert data
@@ -657,6 +658,7 @@ class SimpleDAggerTrainer(DAggerTrainer):
         round_num = 0
 
         while total_timestep_count < total_timesteps:
+            
             collector = self.create_trajectory_collector()
             round_episode_count = 0
             round_timestep_count = 0
@@ -670,7 +672,7 @@ class SimpleDAggerTrainer(DAggerTrainer):
                 policy=self.expert_policy,
                 venv=collector,
                 sample_until=sample_until,
-                deterministic_policy=True,
+                deterministic_policy=False,
                 rng=collector.rng,
             )
 
