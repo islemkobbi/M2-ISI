@@ -672,7 +672,8 @@ class SimpleDAggerTrainer(DAggerTrainer):
                 policy=self.expert_policy,
                 venv=collector,
                 sample_until=sample_until,
-                deterministic_policy=False,
+                deterministic_policy=True,
+
                 rng=collector.rng,
             )
 
